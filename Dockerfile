@@ -25,7 +25,7 @@ COPY ./ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
 COPY ./ssh/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
 
 # Creamos el usuario necesario y le asignamos una contraseña
-RUN useradd -rm -d /home/pruebaSSH -s /bin/bash -g root -G sudo -u 1000 test
+RUN useradd -rm -d /home/pruebaSSH -s /bin/bash -g root -G sudo -u 1000 pruebaSSH
 RUN echo 'pruebaSSH:prueba' | chpasswd
 
 # Iniciamos el servicio
