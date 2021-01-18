@@ -16,13 +16,13 @@ COPY mycontext.xml /usr/local/tomcat/webapps/host-manager/META-INF/context.xml
 COPY mycontext.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
 
 # Copiamos la configuración
-COPY ./ssh/sshd_config /ect/ssh/sshd_config
-COPY ./ssh/ssh_host_ecdsa_key /etc/ssh/ssh_host_ecdsa_key
-COPY ./ssh/ssh_host_ecdsa_key.pub /etc/ssh/ssh_host_ecdsa_key.pub
-COPY ./ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
-COPY ./ssh/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
-COPY ./ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
-COPY ./ssh/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
+COPY ./SSH/sshd_config /ect/ssh/sshd_config
+COPY ./SSH/ssh_host_ecdsa_key /etc/ssh/ssh_host_ecdsa_key
+COPY ./SSH/ssh_host_ecdsa_key.pub /etc/ssh/ssh_host_ecdsa_key.pub
+COPY ./SSH/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
+COPY ./SSH/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
+COPY ./SSH/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
+COPY ./SSH/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
 
 # Creamos el usuario necesario y le asignamos una contraseña
 RUN useradd -rm -d /home/pruebaSSH -s /bin/bash -g root -G sudo -u 1000 pruebaSSH
