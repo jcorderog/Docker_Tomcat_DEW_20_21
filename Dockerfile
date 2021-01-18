@@ -1,7 +1,7 @@
 FROM tomcat:9.0.39-jdk11
 
 # Installing basic tools
-RUN apt update && apt install -y nano && apt install -y  vim && apt install -y openssh-server
+RUN apt update && apt install -y nano && apt install -y  vim 
 
 # Enable manager app, host manager app and docs apss
 RUN mv /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
@@ -14,19 +14,3 @@ COPY mytomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
 # Context Modifying from all default apps
 COPY mycontext.xml /usr/local/tomcat/webapps/host-manager/META-INF/context.xml
 COPY mycontext.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
-
-# Copiamos la configuración
-COPY ./SSH/sshd_config /ect/ssh/sshd_config
-COPY ./SSH/ssh_host_ecdsa_key /etc/ssh/ssh_host_ecdsa_key
-COPY ./SSH/ssh_host_ecdsa_key.pub /etc/ssh/ssh_host_ecdsa_key.pub
-COPY ./SSH/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
-COPY ./SSH/ssh_host_ed25519_key /etc/ssh/ssh_host_ed25519_key
-COPY ./SSH/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key
-COPY ./SSH/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub
-
-# Creamos el usuario necesario y le asignamos una contraseña
-RUN useradd -rm -d /home/pruebaSSH -s /bin/bash -g root -G sudo -u 1000 pruebaSSH
-RUN echo 'pruebaSSH:prueba' | chpasswd
-
-# Iniciamos el servicio
-RUN service ssh start
